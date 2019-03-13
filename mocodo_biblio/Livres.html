@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>catégorie</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>type</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='normal'>id livre id catégorie</span>
+  )
+</div>
+<div>
+  <span class='relation'>adhérent</span> (
+    <span class='primary'>id. nom. prénom. adresse. tel. email. login</span>,
+    <span class='normal'>password</span>
+  )
+</div>
+<div>
+  <span class='relation'>Ecrit</span> (
+    <span class='foreign primary'>id</span>,
+    <span class='foreign primary'>id.1</span>,
+    <span class='normal'>id livre</span>,
+    <span class='normal'>id auteur</span>
+  )
+</div>
+<div>
+  <span class='relation'>livre</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>titre</span>,
+    <span class='normal'>auteur</span>,
+    <span class='normal'>catégorie</span>,
+    <span class='normal'>année</span>,
+    <span class='normal'>pays</span>
+  )
+</div>
+<div>
+  <span class='relation'>Prêt</span> (
+    <span class='foreign primary'>id. nom. prénom. adresse. tel. email. login</span>,
+    <span class='foreign primary'>id</span>,
+    <span class='normal'>id livre</span>,
+    <span class='normal'>id adhérent</span>,
+    <span class='normal'>date debut</span>,
+    <span class='normal'>date de fin</span>,
+    <span class='normal'>courrier de retard</span>
+  )
+</div>
+<div>
+  <span class='relation'>AUTEUR</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>prénom</span>,
+    <span class='normal'>age</span>,
+    <span class='normal'>ville</span>
+  )
+</div>
+<div>
+  <span class='relation'>référence</span> (
+    <span class='foreign primary'>id</span>,
+    <span class='foreign primary'>id.1</span>,
+    <span class='normal'>id livres</span>,
+    <span class='normal'>id mot1</span>,
+    <span class='normal'>id mot2</span>,
+    <span class='normal'>id mot3</span>
+  )
+</div>
+<div>
+  <span class='relation'>mot_clef</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>mot</span>
+  )
+</div>
+</div>
+</body>
+</html>

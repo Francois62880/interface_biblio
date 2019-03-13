@@ -1,0 +1,11 @@
+catégorie: id, type
+Rayon, 1N livre, 11 catégorie : id livre id catégorie
+adhérent: id. nom. prénom. adresse. tel. email. login, password
+
+Ecrit, 1N AUTEUR, 1N livre : id livre, id auteur
+livre: id, titre, auteur, catégorie, année, pays
+Prêt , 1N adhérent, 1N livre: id livre, id adhérent, date debut, date de fin, courrier de retard
+
+AUTEUR: id, nom, prénom, age, ville
+référence, 1N livre, 1N mot_clef : id livres, id mot1, id mot2, id mot3
+mot_clef: id , mot
