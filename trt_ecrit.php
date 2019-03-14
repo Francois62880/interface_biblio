@@ -13,9 +13,9 @@ else     { $prenom="";} ;
 // On vérifie si les champs sont vides 
 if(empty($livre) OR empty($nom) OR empty($prenom) )
     { 
-     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
+     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli correctement tous les champs.</font></div>'; 
     } 
-// Aucun champ n'est vide, on peut enregistrer dans la table 
+// Aucun champ n'est vide, on peut enregistrer dans la table ecrit
 else      
     { 
        // connexion à la base
@@ -39,18 +39,21 @@ if($db->connect_error){
     // on écrit la requête sql 
     $sql = 'INSERT INTO ecrit (numlivre, numauteur) VALUES ('.$row['id_livre'].','.$row2['id_auteur'].')'; 
      
-    // on insère les informations du formulaire dans la table 
+    // on insère les informations du formulaire dans la table ecrit
     $resultat = $db->query($sql);
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
         include ('header.php');
-        include ('form_ecrit.php');
-        echo '<div class="offset-lg-1" >L\'insertion a réussi</div><br>';
+        echo '<div class="row"><div class="offset-lg-1" >L\'insertion a réussi</div></div><br>';
+        include ('btn.php');
     }
+     //si vous vous êtes trompé dans les champs à remplir
 			else{
-                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
+                include ('header.php');
+                include ('form_ecrit.php');
+                echo '<div class="row"><div class="offset-lg-1 col-lg-6" >Vous n\'avez pas rempli correctement le formulaire.</div></div><br>';}
+    // on ferme la connexion      
     if(@$db->close()){
         
     }else {

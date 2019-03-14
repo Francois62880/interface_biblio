@@ -10,7 +10,7 @@ else     { $categorie="";} ;
 // On vérifie si les champs sont vides 
 if(empty($livre) OR empty($categorie))
     { 
-     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
+     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le formulaire.</font></div>'; 
     } 
 // Aucun champ n'est vide, on peut enregistrer dans la table 
 else      
@@ -23,7 +23,7 @@ if($db->connect_error){
 } 
  else {
     // echo 'connexion reussi <br>';
-    // vérification de la base de donnée pour éviter les doublons
+    // recherche des id correspondant au livre et a la catégorie
     $test = 'SELECT id_livre FROM livre WHERE titre="'.$livre.'"'; 
     $req = $db->query($test); 
     $row = $req->fetch_array();
@@ -36,18 +36,19 @@ if($db->connect_error){
     // on écrit la requête sql 
     $sql = 'INSERT INTO rayon (numlivre, numcategorie) VALUES ('.$row['id_livre'].','.$row2['id_cat'].')'; 
      
-    // on insère les informations du formulaire dans la table 
+    // on insère les informations du formulaire dans la table rayon
     $resultat = $db->query($sql);
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
         include ('header.php');
-        include ('form_rayon.php');
         echo '<div class="offset-lg-1" >Le mot clef '.$categorie.' a été ajouté.</div><br>';
+        include ('btn.php');
     }
+    //si vous vous êtes trompé dans les champs à remplir
 			else{
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
+    // on ferme la connexion             
     if(@$db->close()){
         
     }else {

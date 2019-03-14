@@ -8,7 +8,7 @@
                     </div>
                     <div class="form-group col-md-12">
                     <label for="exampleFormControlSelect1">type de livre</label>
-                    <select class="form-control" name="clef1" id="exampleFormControlSelect1">
+                    <select class="form-control" name="categorie" id="exampleFormControlSelect1">
                         <?php 
                         require_once ('connexion.php');
                         $option = 'SELECT categorie FROM cat'; 

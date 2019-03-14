@@ -18,7 +18,7 @@ if(empty($livre) OR empty($clef1) OR empty($clef2) OR empty($clef3))
     { 
      echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
     } 
-// Aucun champ n'est vide, on peut enregistrer dans la table 
+// Aucun champ n'est vide, on peut enregistrer dans la table reference
 else      
      {
        // connexion à la base
@@ -29,7 +29,7 @@ else
        }
         else {
     // echo 'connexion reussi <br>';
-    // vérification de la base de donnée pour éviter les doublons
+    // recherche des id correspondant au livre et les mots clefs
     $test = 'SELECT id_livre FROM livre WHERE titre="'.$livre.'"'; 
     $req = $db->query($test); 
     $row = $req->fetch_array();
@@ -44,18 +44,21 @@ else
     // on écrit la requête sql 
     $sql = 'INSERT INTO reference (numlivre, numclef1, numclef2, numclef3) VALUES ('.$row['id_livre'].','.$bcl[0].','.$bcl[1].','.$bcl[2].')'; 
      
-    // on insère les informations du formulaire dans la table 
+    // on insère les informations du formulaire dans la table référence
     $resultat = $db->query($sql);
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
         include ('header.php');
-        include ('form_reference.php');
         echo '<div class="offset-lg-1" >L\'insertion a réussi</div><br>';
+        include ('btn.php');
     }
+    //si vous vous êtes trompé dans les champs à remplir
 			else{
+                include ('header.php');
+        include ('form_reference.php');
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
+    // on ferme la connexion              
     if(@$db->close()){
         
     }else {

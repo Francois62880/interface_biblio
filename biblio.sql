@@ -103,14 +103,14 @@ where titre="'.$search.'" or auteur="'.$search.'" or mot="'.$search.'"
 SELECT titre 
 
 
-
 FROM livre 
-
 
 JOIN ecrit ON livre.id_livre = ecrit.numlivre 
 
-
+JOIN auteur ON ecrit.numlivre = auteur.id_auteur
 
 JOIN reference  ON livre.id_livre = reference.numlivre
 
-where titre="histoire" or edition="'gallimard'" or mot="'avion'"
+JOIN clef  ON reference.numlivre = clef.id_clef
+
+where titre="histoire" or edition="'gallimard'" or mot="'avion'";

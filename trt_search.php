@@ -18,9 +18,6 @@ $db = @new mysqli('localhost', 'root','root', 'bibliotheque')  or die('Erreur de
 if($db->connect_error){
     echo 'erreur de connexion : '.$db->connect_error.'<br>';
 } else {
-    // echo 'connexion reussi <br>';
-    // vérification de la base de donnée pour éviter les doublons
-    
     // on écrit la requête sql 
     $sql = 'SELECT titre, from livre where titre="'.$search.'" or auteur="'.$search.'" or mot="'.$search.'"'; 
      
@@ -29,15 +26,17 @@ if($db->connect_error){
     $rec = $result->fetch_array();
     // on affiche le résultat pour le visiteur 
 
-    var_dump($rec);
     if ($result == true){
         include ('header.php');
-        include ('form_clef.php');
         echo '<div class="offset-lg-1" >Le livre que vous cherchez est :'.$rec['titre'].' a été trouvé.</div><br>';
+        
     }
+    //si vous vous êtes trompé dans les champs à remplir
 			else{
-                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
+                include ('header.php');
+                include ('form_clef.php');
+                echo '<div class="offset-lg-1" >Vous n\'avez pas rempli correctement le formulaire.</div><br>';}
+    // on ferme la connexion             
     if(@$db->close()){
         
     }else {

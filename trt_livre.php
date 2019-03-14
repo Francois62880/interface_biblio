@@ -25,7 +25,7 @@ if(empty($titre) OR empty($annee) OR empty($edition) OR empty($langue) OR empty(
     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le formulaire</font></div>'; 
     } 
 
-// Aucun champ n'est vide, on peut enregistrer dans la table 
+// Aucun champ n'est vide, on peut enregistrer dans la table livre
 else      
     { 
        // connexion à la base
@@ -40,39 +40,38 @@ if($db->connect_error){
     $req = $db->query($test); 
     $row = $req->fetch_array();
     
-    if($row!= 0)  // l'langue existe déjà, on affiche un message d'erreur 
+    if($row!= 0)  // le titre existe déjà, on affiche un message d'erreur 
     { 
         include ('header.php');
         include ('form_livre.php');
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais ce titre : '.$titre.' existe déjà.<br></font></div>'; 
     } 
 
-    else  // L'langue n'existe pas, on insère les données dans la table form 
+    else  // Le titre n'existe pas, on insère les données dans la table livre
     {
     $test2 = 'SELECT id_cat FROM cat WHERE categorie="'.$categorie.'"'; 
     $req2 = $db->query($test2); 
     $row2 = $req2->fetch_array();
 
-    // $test3 = 'SELECT id_cat FROM cat WHERE categorie="'.$categorie.'"'; 
-    // $req3 = $db->query($test3); 
-    // $row3 = $req3->fetch_array();
-
-
     // on écrit la requête sql 
     $sql = 'INSERT INTO livre (titre, annee, edition, langue, numcat, archivage) VALUES ("'.$titre.'","'.$annee.'","'.$edition.'","'.$langue.'",'.$row2['id_cat'].',"'.$archivage.'")'; 
-    // on insère les informations du formulaire dans la table 
+    // on insère les informations du formulaire dans la table livre
     $resultat = $db->query($sql);
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-				}
-			else{
-                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
-    if(@$db->close()){
         include ('header.php');
-        include ('form_livre.php');
         echo '<div class="offset-lg-1" >Le mot livre '.$titre.' a été ajouté.</div><br>';
+        include ('btn.php');
+                }
+    //si vous vous êtes trompé dans les champs à remplir            
+			else{
+                include ('header.php');
+                include ('form_livre.php');
+                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
+    // on ferme la connexion              
+    if(@$db->close()){
+       
     }else {
         echo 'erreur lors de la deconnexion...';
     }

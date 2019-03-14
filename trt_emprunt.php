@@ -43,7 +43,7 @@ else
         include ('form_emprunt.php');
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais ce livre : '.$livre.' est déjà emprunté.<br></font></div>'; 
     } 
-    else  // L'langue n'existe pas, on insère les données dans la table form 
+    else  // Le livre n'a pas encore été emprunté, on insère les données dans la table emprunt
     {
 
     $test = 'SELECT id_livre FROM livre WHERE titre="'.$livre.'"'; 
@@ -63,20 +63,21 @@ else
     // on écrit la requête sql 
     $sql = 'INSERT INTO emprunt (numlivre, numadherent, numprenom, datedebut, datefin) VALUES ('.$row['id_livre'].','.$row2['id_adherent'].','.$row3['id_adherent'].',"'.$dateDebut.'","'.$dateFin.'")'; 
      
-    // on insère les informations du formulaire dans la table 
+    // on insère les informations du formulaire dans la table emprunt
     $resultat = $db->query($sql);
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-        include ('header.php');
-        include ('form_emprunt.php');
-        echo '<div class="offset-lg-1" >Le livre a bien été emrpunté.</div><br>';
-    }
+    include ('header.php');
+    echo '<div class="row"><div class="offset-lg-1" Le livre a bien été emrpunté.</div></div><br>';
+    include ('btn.php');
+                    }
+    //si vous vous êtes trompé dans les champs à remplir
 			else{
                 include ('header.php');
                 include ('form_emprunt.php');
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
-                 
+     // on ferme la connexion                  
     if(@$db->close()){
         
     }else {

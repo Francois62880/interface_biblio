@@ -24,7 +24,7 @@ if($db->connect_error){
     $req = $db->query($test); 
     $row = $req->fetch_array();
     
-    if($row!= 0)  // le existe déjà, on affiche un message d'erreur 
+    if($row!= 0)  // le mot existe déjà, on affiche un message d'erreur 
     { 
         include ('header.php');
         include ('form_clef.php');
@@ -32,7 +32,7 @@ if($db->connect_error){
 
     } 
 
-    else  // L'langue n'existe pas, on insère les données dans la table form 
+    else  // Le mot n'existe pas, on insère les données dans la table clef
     {
     // on écrit la requête sql 
     $sql = 'INSERT INTO clef (mot) VALUES ("'.$mot1.'")'; 
@@ -43,12 +43,16 @@ if($db->connect_error){
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
         include ('header.php');
-        include ('form_clef.php');
         echo '<div class="offset-lg-1" >Le mot clef '.$mot1.' a été ajouté.</div><br>';
+        include ('btn.php');
     }
+    //si vous vous êtes trompé dans le champs a remplir
 			else{
-                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
+                include ('header.php');
+                include ('form_clef.php');
+                echo 'Vous n\'avez pas rempli correctement le champ de mot clef.<br>';}
                  
+    // on ferme la connexion
     if(@$db->close()){
         
     }else {
