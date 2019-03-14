@@ -13,7 +13,6 @@
                         require_once ('connexion.php');
                         $option = 'SELECT mot FROM clef'; 
                         $req = $db->query($option); 
-                        var_dump($req);
                         while ($row = $req->fetch_array()) { 
                         echo '<option>'.$row['mot'].'</option>';
                     } ?>
@@ -25,7 +24,6 @@
                     <?php 
                         $option = 'SELECT mot FROM clef'; 
                         $req = $db->query($option); 
-                        var_dump($req);
                         while ($row = $req->fetch_array()) { 
                         echo '<option>'.$row['mot'].'</option>';
                     }
@@ -38,7 +36,6 @@
                     <?php 
                         $option = 'SELECT mot FROM clef'; 
                         $req = $db->query($option); 
-                        var_dump($req);
                         while ($row = $req->fetch_array()) { 
                         echo '<option>'.$row['mot'].'</option>';
                     }

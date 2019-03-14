@@ -13,7 +13,6 @@
                         require_once ('connexion.php');
                         $option = 'SELECT categorie FROM cat'; 
                         $req = $db->query($option); 
-                        var_dump($req);
                         while ($row = $req->fetch_array()) { 
                         echo '<option>'.$row['categorie'].'</option>';
                     } ?>

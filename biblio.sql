@@ -49,6 +49,7 @@ CREATE TABLE livre(
     edition VARCHAR(40) NOT NULL,
     langue VARCHAR(40) NOT NULL,
     numcat INT UNSIGNED,
+    archivage tinyint(1) NOT NULL,
     CONSTRAINT fk_num_cat FOREIGN KEY (numcat) REFERENCES cat(id_cat)
 )
 ENGINE=INNODB; 
@@ -58,13 +59,13 @@ CREATE TABLE reference(
     numclef1 INT NOT NULL,
     numclef2 INT NOT NULL,
     numclef3 INT NOT NULL
-)
+);
 ENGINE=INNODB;
 
 CREATE TABLE rayon(
     numlivre int NOT NULL, 
     numcategorie int NOT NULL
-)
+);
 
 CREATE TABLE ecrit(
     numlivre int NOT NULL, 
@@ -74,6 +75,42 @@ CREATE TABLE ecrit(
 CREATE TABLE emprunt(
     numlivre int NOT NULL,
     numadherent INT NOT NULL,
+    numprenom INT NOT NULL,
     datedebut date NOT NULL,
     datefin date NOT NULL
-)
+);
+
+-- Requete pour cherche un livre par auteur, par titre ou par mot clef
+
+SELECT titre, auteur.auteur, cat.categorie 
+
+
+
+FROM livre 
+
+
+JOIN ecrit ON livre.id_livre = ecrit.numlivre 
+
+
+
+JOIN reference  ON livre.id_livre = reference.numlivre;
+
+
+where titre="'.$search.'" or auteur="'.$search.'" or mot="'.$search.'"
+
+
+
+SELECT titre 
+
+
+
+FROM livre 
+
+
+JOIN ecrit ON livre.id_livre = ecrit.numlivre 
+
+
+
+JOIN reference  ON livre.id_livre = reference.numlivre
+
+where titre="histoire" or edition="'gallimard'" or mot="'avion'"

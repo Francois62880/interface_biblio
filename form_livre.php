@@ -26,22 +26,35 @@
                         <input type="text" name="langue" class="form-control" id="inputSujet" placeholder="Langue">
                     </div>
                     <div class="form-group col-md-12">
-                    <label for="exampleFormControlSelect1">type de livre</label>
-                    <select class="form-control" name="clef1" id="exampleFormControlSelect1">
-                        <?php 
-                        require_once ('connexion.php');
-                        $option = 'SELECT categorie FROM cat'; 
-                        $req = $db->query($option); 
-                        var_dump($req);
-                        while ($row = $req->fetch_array()) { 
-                        echo '<option>'.$row['categorie'].'</option>';
-                    } ?>
-                    </select>
+                        <label for="exampleFormControlSelect1">type de livre</label>
+                        <select class="form-control" name="categorie" id="exampleFormControlSelect1">
+                            <?php 
+                            require_once('connexion.php');
+                            $option = 'SELECT categorie FROM cat';
+                            $req = $db->query($option);
+                            while ($row = $req->fetch_array()) {
+                                echo '<option>' . $row['categorie'] . '</option>';
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="form-check offset-md-4 col-md-4">
+                        <input class="form-check-input" name="archivage" type="checkbox" value="0" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Livre archivé
+                        </label>
+                    </div>
+                    <div class="form-check col-md-4">
+                        <input class="form-check-input" name="archivage" type="checkbox" value="1" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Livre en rayon
+                        </label>
+                    </div>
                 </div>
-                    <button class="btn btn-primary" type="submit" value="insérer" name="envoyer" id="button">Sign in</button>
-                </div>
+                <button class="btn btn-primary" type="submit" value="insérer" name="envoyer" id="button">Sign in</button>
+        </form>
     </div>
+</div>
 
-    </fieldset>
-    </form>
+</fieldset>
+</form>
 </div> 

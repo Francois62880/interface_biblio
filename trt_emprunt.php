@@ -12,12 +12,12 @@ else     { $prenom="";} ;
 if(isset($_POST['dateDebut'])) {    $dateDebut=$_POST['dateDebut'];} 
 else     { $dateDebut="";} ;
 
-if(isset($_POST['categorie'])) {    $categorie=$_POST['categorie'];} 
-else     { $categorie="";} ;
+if(isset($_POST['dateFin'])) {    $dateFin=$_POST['dateFin'];} 
+else     { $dateFin="";} ;
 
 
 // On vérifie si les champs sont vides 
-if(empty($livre) OR empty($nom) OR empty($prenom) OR empty($dateDebut))
+if(empty($livre) OR empty($nom) OR empty($prenom) OR empty($dateDebut) OR empty($dateFin))
     { 
      echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
     } 
@@ -33,19 +33,35 @@ else
         else {
     // echo 'connexion reussi <br>';
     // vérification de la base de donnée pour éviter les doublons
+    $test4 = 'SELECT id_livre FROM livre JOIN  emprunt ON livre.id_livre = emprunt.numlivre  WHERE titre="'.$livre.'"'; 
+    $req4 = $db->query($test4); 
+    $row4 = $req4->fetch_array();
+    
+    if($row4!= 0)  // le livre existe déjà, on affiche un message d'erreur 
+    { 
+        include ('header.php');
+        include ('form_emprunt.php');
+    echo '<div class="offset-lg-1" ><font color="red">Désolé, mais ce livre : '.$livre.' est déjà emprunté.<br></font></div>'; 
+    } 
+    else  // L'langue n'existe pas, on insère les données dans la table form 
+    {
+
     $test = 'SELECT id_livre FROM livre WHERE titre="'.$livre.'"'; 
     $req = $db->query($test); 
     $row = $req->fetch_array();
 
-    $bcl = array();
-    $test2 = 'SELECT id_clef FROM clef WHERE mot="'.$nom.'" or mot="'.$prenom.'" or mot="'.$dateDebut.'"'; 
+    $test2 = 'SELECT id_adherent FROM adherent WHERE nom="'.$nom.'"'; 
     $req2 = $db->query($test2); 
-    while($row2 = $req2->fetch_array()){
-      $bcl[] = $row2['id_clef'];
-    }
+    $row2 = $req2->fetch_array();
 
+    
+    $test3 = 'SELECT id_adherent FROM adherent WHERE prenom="'.$prenom.'"'; 
+    $req3 = $db->query($test3); 
+    $row3 = $req3->fetch_array();
+
+    
     // on écrit la requête sql 
-    $sql = 'INSERT INTO reference (numlivre, numnom, numprenom, numdateDebut) VALUES ('.$row['id_livre'].','.$bcl[0].','.$bcl[1].','.$bcl[2].')'; 
+    $sql = 'INSERT INTO emprunt (numlivre, numadherent, numprenom, datedebut, datefin) VALUES ('.$row['id_livre'].','.$row2['id_adherent'].','.$row3['id_adherent'].',"'.$dateDebut.'","'.$dateFin.'")'; 
      
     // on insère les informations du formulaire dans la table 
     $resultat = $db->query($sql);
@@ -53,10 +69,12 @@ else
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
         include ('header.php');
-        include ('form_reference.php');
-        echo '<div class="offset-lg-1" >L\'insertion a réussi</div><br>';
+        include ('form_emprunt.php');
+        echo '<div class="offset-lg-1" >Le livre a bien été emrpunté.</div><br>';
     }
 			else{
+                include ('header.php');
+                include ('form_emprunt.php');
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
                  
     if(@$db->close()){
@@ -64,5 +82,6 @@ else
     }else {
         echo 'erreur lors de la deconnexion...';
     }
+}
 }
 }

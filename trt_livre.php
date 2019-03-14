@@ -15,9 +15,12 @@ else  {    $langue="";}
 if(isset($_POST['categorie']))   {   $categorie=$_POST['categorie'];} 
 else  {    $categorie="";} 
 
+if(isset($_POST['archivage']))   {   $archivage=$_POST['archivage'];} 
+else  {    $archivage="";} 
+
 
 // On vérifie si les champs sont vides 
-if(empty($titre) OR empty($annee) OR empty($edition) OR empty($langue))
+if(empty($titre) OR empty($annee) OR empty($edition) OR empty($langue) OR empty($categorie))
     { 
     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le formulaire</font></div>'; 
     } 
@@ -50,9 +53,13 @@ if($db->connect_error){
     $req2 = $db->query($test2); 
     $row2 = $req2->fetch_array();
 
+    // $test3 = 'SELECT id_cat FROM cat WHERE categorie="'.$categorie.'"'; 
+    // $req3 = $db->query($test3); 
+    // $row3 = $req3->fetch_array();
+
 
     // on écrit la requête sql 
-    $sql = 'INSERT INTO livre (titre, annee, edition, langue) VALUES ("'.$titre.'","'.$annee.'","'.$edition.'","'.$langue.'",'.$row2['id_cat'].')'; 
+    $sql = 'INSERT INTO livre (titre, annee, edition, langue, numcat, archivage) VALUES ("'.$titre.'","'.$annee.'","'.$edition.'","'.$langue.'",'.$row2['id_cat'].',"'.$archivage.'")'; 
     // on insère les informations du formulaire dans la table 
     $resultat = $db->query($sql);
 

@@ -52,6 +52,7 @@ if($db->connect_error){
     if($row!= 0)  // l'email existe déjà, on affiche un messpseudo d'erreur 
     { 
         include ('header.php');
+        include 'menu.php';
         include ('form_listing.php');
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais l\'adresse mail ou le pseudo existent déjà.<br></font></div>';
     } 
@@ -72,8 +73,8 @@ if($db->connect_error){
                  
     if(@$db->close()){
         include ('header.php');
-        include ('form_listing.php');
         echo '<div class="offset-lg-1" >L\'adhérent '.$nom.' '.$prenom.' a été ajouté.</div><br>';
+        include ('btn.php');
     }else {
         echo 'erreur lors de la deconnexion...';
     }
