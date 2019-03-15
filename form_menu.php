@@ -6,7 +6,6 @@ $menu = array("adherent" => "form_listing.php",
 "auteur" => "form_auteur.php",
 "ecrit" => "form_ecrit.php",
 "categorie" => "form_categorie.php",
-"rayon" => "form_rayon.php",
 "mot clef" => "form_clef.php",
 "reference" => "form_reference.php",
 );

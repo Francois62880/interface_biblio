@@ -20,8 +20,6 @@ function contenu($x){
         return "ecrit.php";
     }elseif($x === 'form_categorie.php'){
         return "categorie.php";
-    }elseif($x === 'form_rayon.php'){
-        return "rayon.php";
     }elseif($x === 'form_clef.php'){
         return "clef.php";
     }elseif($x === 'form_reference.php'){

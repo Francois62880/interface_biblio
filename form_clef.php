@@ -1,4 +1,4 @@
-<div class="offset-lg-1 col-lg-10" id="blockAdherent">
+<div class="offset-lg-1 col-lg-6" id="blockAdherent">
     <div class="section noprint">
         <h2 class="section-title ct1">Mot clé</h2>
         <fieldset>

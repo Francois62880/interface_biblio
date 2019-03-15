@@ -7,8 +7,8 @@
                     <input type="text" name="livre" class="form-control" id="exampleFormControlInput1" placeholder="Titre du livre">
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="exampleFormControlSelect1">Premier mot clef</label>
-                    <select class="form-control" name="clef1" id="exampleFormControlSelect1">
+                    <label for="exampleFormControlSelect1">Mot clef (ctrl + click gauche)</label>
+                    <select multiple class="form-control" name="clef1" id="exampleFormControlSelect1">
                         <?php 
                         require_once ('connexion.php');
                         $option = 'SELECT mot FROM clef'; 
@@ -16,30 +16,6 @@
                         while ($row = $req->fetch_array()) { 
                         echo '<option>'.$row['mot'].'</option>';
                     } ?>
-                    </select>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="exampleFormControlSelect2">Deuxième mot clef</label>
-                    <select class="form-control" name="clef2" id="exampleFormControlSelect2">
-                    <?php 
-                        $option = 'SELECT mot FROM clef'; 
-                        $req = $db->query($option); 
-                        while ($row = $req->fetch_array()) { 
-                        echo '<option>'.$row['mot'].'</option>';
-                    }
-                    ?>
-                    </select>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="exampleFormControlSelect2">Troisième mot clef</label>
-                    <select class="form-control" name="clef3" id="exampleFormControlSelect2">
-                    <?php 
-                        $option = 'SELECT mot FROM clef'; 
-                        $req = $db->query($option); 
-                        while ($row = $req->fetch_array()) { 
-                        echo '<option>'.$row['mot'].'</option>';
-                    }
-                     ?>
                     </select>
                 </div>
         </form>

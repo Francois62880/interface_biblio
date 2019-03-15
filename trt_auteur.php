@@ -34,15 +34,14 @@ if($db->connect_error){
     $req = $db->query($test); 
     $row = $req->fetch_array();
     
-    if($row!= 0)  // l'langue existe déjà, on affiche un message d'erreur 
+    if($row!= 0)  // le nom et le prenom existent déjà, on affiche un message d'erreur 
     { 
         include ('header.php');
-        include ('menu.php');
         include ('form_auteur.php');
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais cet auteur existe déjà.<br></font></div>'; 
     } 
 
-    else  // L'langue n'existe pas, on insère les données dans la table auteur
+    else  // Le nom et le prenom n'existent pas, on insère les données dans la table auteur
     {
     // on écrit la requête sql 
     $sql = 'INSERT INTO auteur (nom, prenom, age, nationalite) VALUES ("'.$nom.'","'.$prenom.'","'.$age.'","'.$nationalite.'")'; 

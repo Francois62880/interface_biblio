@@ -6,15 +6,9 @@ else     { $livre="";} ;
 if(isset($_POST['clef1'])) {    $clef1=$_POST['clef1'];} 
 else     { $clef1="";} ;
 
-if(isset($_POST['clef2'])) {    $clef2=$_POST['clef2'];} 
-else     { $clef2="";} ;
-
-if(isset($_POST['clef3'])) {    $clef3=$_POST['clef3'];} 
-else     { $clef3="";} ;
-
 
 // On vérifie si les champs sont vides 
-if(empty($livre) OR empty($clef1) OR empty($clef2) OR empty($clef3))
+if(empty($livre) OR empty($clef1))
     { 
      echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
     } 
@@ -35,14 +29,14 @@ else
     $row = $req->fetch_array();
 
     $bcl = array();
-    $test2 = 'SELECT id_clef FROM clef WHERE mot="'.$clef1.'" or mot="'.$clef2.'" or mot="'.$clef3.'"'; 
+    $test2 = 'SELECT id_clef FROM clef WHERE mot="'.$clef1.'"'; 
     $req2 = $db->query($test2); 
     while($row2 = $req2->fetch_array()){
       $bcl[] = $row2['id_clef'];
     }
 
     // on écrit la requête sql 
-    $sql = 'INSERT INTO reference (numlivre, numclef1, numclef2, numclef3) VALUES ('.$row['id_livre'].','.$bcl[0].','.$bcl[1].','.$bcl[2].')'; 
+    $sql = 'INSERT INTO reference (numlivre, numclef1, numclef2, numclef3) VALUES ('.$row['id_livre'].','.$row2['id_clef'].')'; 
      
     // on insère les informations du formulaire dans la table référence
     $resultat = $db->query($sql);

@@ -56,9 +56,7 @@ ENGINE=INNODB;
 
 CREATE TABLE reference(
     numlivre int NOT NULL,
-    numclef1 INT NOT NULL,
-    numclef2 INT NOT NULL,
-    numclef3 INT NOT NULL
+    numclef INT NOT NULL
 );
 ENGINE=INNODB;
 
@@ -100,17 +98,23 @@ where titre="'.$search.'" or auteur="'.$search.'" or mot="'.$search.'"
 
 
 
-SELECT titre 
+SELECT titre,auteur.nom, cat.categorie, clef.mot
 
+FROM  livre 
 
-FROM livre 
+JOIN cat ON livre.numcat = cat.id_cat
 
-JOIN ecrit ON livre.id_livre = ecrit.numlivre 
+JOIN ecrit ON  livre.id_livre = ecrit.numlivre
 
-JOIN auteur ON ecrit.numlivre = auteur.id_auteur
+JOIN auteur ON ecrit.numauteur = auteur.id_auteur
 
 JOIN reference  ON livre.id_livre = reference.numlivre
 
-JOIN clef  ON reference.numlivre = clef.id_clef
+JOIN clef  ON reference.numclef = clef.id_clef
 
-where titre="histoire" or edition="'gallimard'" or mot="'avion'";
+where titre ='histoire'
+
+group by titre;
+
+
+
