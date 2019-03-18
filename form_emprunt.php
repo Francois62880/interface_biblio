@@ -40,11 +40,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="example-date-input" class="col-12 col-form-label">Date de début d'emprunt :</label>
-                        <input class="form-control" type="date" name="dateDebut" value="" id="example-date-input">
+                        <input class="form-control" type="date" name="dateDebut" value="" id="datedebut">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="example-date-input" class="col-12 col-form-label">Date de fin d'emprunt :</label>
-                        <input class="form-control" type="date" name="dateFin" value="" id="example-date-input">
+                        <input class="form-control" type="date" name="dateFin" value="" id="datefin">
                 </div>
         </form>
         <button class="btn btn-primary" type="submit" value="insérer" name="envoyer" id="button">Sign in</button>

@@ -2,15 +2,15 @@
 
 include ('header.php');
 
-include ('menu.php');
+include ('login.php');
 
-include contenu($x);
+include ('trt_login.php');
 
-// include ('form_search.php');
+include ('form_search.php');
 
-// include ('trt_search.php')
+include ('trt_search.php')
 
 ?>
-
+</div>
 </body>
 </html>

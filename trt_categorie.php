@@ -25,8 +25,7 @@ if($db->connect_error){
     
     if($row!= 0)  // l'langue existe déjà, on affiche un message d'erreur 
     { 
-        include ('header.php');
-        include ('form_categorie.php');
+    echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_categorie.php">';
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais cette categorie existe déjà.<br></font></div>'; 
     } 
 
@@ -41,12 +40,12 @@ if($db->connect_error){
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
          include ('header.php');
+         echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_categorie.php">';
                 echo '<div class="row"><div class="offset-lg-1 col-lg-6" >La categorie '.$categorie.' a été ajouté.<br></div></div>';
-                include ('btn.php');}
+               }
 			else{
     //si vous vous êtes trompé dans les champs à remplir
-                include ('header.php');
-                include ('form_categorie.php');
+    echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_categorie.php">';
                 echo '<div class="row"><div class="offset-lg-1 col-lg-6" >Vous n\'avez pas rempli correctement le formulaire.<br></div></div>';}
     // on ferme la connexion
     if(@$db->close()){

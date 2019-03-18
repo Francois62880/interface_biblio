@@ -39,8 +39,7 @@ else
     
     if($row4!= 0)  // le livre existe déjà, on affiche un message d'erreur 
     { 
-        include ('header.php');
-        include ('form_emprunt.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_emprunt.php">';
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais ce livre : '.$livre.' est déjà emprunté.<br></font></div>'; 
     } 
     else  // Le livre n'a pas encore été emprunté, on insère les données dans la table emprunt
@@ -68,14 +67,12 @@ else
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-    include ('header.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_emprunt.php">';
     echo '<div class="row"><div class="offset-lg-1" Le livre a bien été emrpunté.</div></div><br>';
-    include ('btn.php');
                     }
     //si vous vous êtes trompé dans les champs à remplir
 			else{
-                include ('header.php');
-                include ('form_emprunt.php');
+                echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_emprunt.php">';
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
      // on ferme la connexion                  
     if(@$db->close()){

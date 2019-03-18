@@ -1,5 +1,8 @@
 <div class="offset-lg-1 col-lg-6" id="blockAdherent">
     <div class="section noprint">
+        <h2 class="section-title ct1">Rajout d'une catégorie</h2>
+<div class="offset-lg-1 col-lg-6" id="blockAdherent">
+    <div class="section noprint">
         <form method="post" action="trt_categorie.php" class="well form-horizontal">
                 <div class="form-row">
                     <div class="form-group col-md-12">
@@ -10,4 +13,5 @@
                 </div>
     </div>
     </form>
+</div>
 </div>

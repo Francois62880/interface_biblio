@@ -1,6 +1,6 @@
 <div class="offset-lg-1 col-lg-6" id="blockLivre">
     <div class="section noprint">
-        <h2 class="section-title ct1">Inscrivez-vous</h2>
+        <h2 class="section-title ct1">Nouveau livre</h2>
 
         <form method="post" action="trt_livre.php" class="well form-horizontal">
             <fieldset>
@@ -50,7 +50,7 @@
                         </label>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit" value="insérer" name="envoyer" id="button">Sign in</button>
+                <button class="btn btn-primary" type="submit" value="inserer" name="envoyer" id="button">Sign in</button>
         </form>
     </div>
 </div>

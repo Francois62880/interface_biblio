@@ -1,6 +1,3 @@
-
-
-
 <div class="offset-lg-1 col-lg-6" id="blockAdherent">
     <div class="section noprint">
         <h2 class="section-title ct1">Inscrivez-vous</h2>

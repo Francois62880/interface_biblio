@@ -21,8 +21,9 @@ else  {    $archivage="";}
 
 // On vérifie si les champs sont vides 
 if(empty($titre) OR empty($annee) OR empty($edition) OR empty($langue) OR empty($categorie))
-    { 
-    echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le formulaire</font></div>'; 
+{     
+       
+    echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_livre.php">';
     } 
 
 // Aucun champ n'est vide, on peut enregistrer dans la table livre
@@ -41,9 +42,8 @@ if($db->connect_error){
     $row = $req->fetch_array();
     
     if($row!= 0)  // le titre existe déjà, on affiche un message d'erreur 
-    { 
-        include ('header.php');
-        include ('form_livre.php');
+    {
+    echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_livre.php">';
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais ce titre : '.$titre.' existe déjà.<br></font></div>'; 
     } 
 
@@ -60,15 +60,14 @@ if($db->connect_error){
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-        include ('header.php');
-        echo '<div class="offset-lg-1" >Le mot livre '.$titre.' a été ajouté.</div><br>';
-        include ('btn.php');
+        unset($x);
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_livre.php">';
+        echo '<div class="offset-lg-1" >Le livre '.$titre.' a été ajouté.</div><br>';
                 }
     //si vous vous êtes trompé dans les champs à remplir            
 			else{
-                include ('header.php');
-                include ('form_livre.php');
-                echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
+                echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_livre.php">';
+                echo '<div class="offset-lg-1" >Vous n\'avez pas rempli correctement le formulaire.</div><br>';}
     // on ferme la connexion              
     if(@$db->close()){
        

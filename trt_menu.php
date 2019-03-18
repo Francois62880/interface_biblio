@@ -6,14 +6,14 @@ else     { $x="";} ;
 
 function contenu($x){
     if (empty($x)){
-          return 'adherent.php';
+          return 'login.php';
     }else {
         if($x === 'form_adherent.php'){
             return "adherent.php";}
     elseif($x === 'form_emprunt.php'){
         return "emprunt.php";
         }elseif($x === 'form_livre.php'){
-            return  'livre.php';
+            return  'form_livre.php';
     }elseif($x === 'form_auteur.php'){
                 return "auteur.php";
     }elseif($x === 'form_ecrit.php'){

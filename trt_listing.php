@@ -31,6 +31,7 @@ else   {   $login="";}
 // On vérifie si les champs sont vides 
 if(empty($nom) OR empty($prenom) OR empty($adresse) OR empty($ville) OR empty($email) OR empty($telephone) OR empty($portable) OR empty($pseudo) OR empty($login))
     { 
+       
     echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le formulaire</font></div>'; 
     } 
 
@@ -51,8 +52,8 @@ if($db->connect_error){
     
     if($row!= 0)  // l'email ou le pseudo existe déjà, on affiche un message d'erreur 
     { 
-        include ('header.php');
-        include ('form_listing.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_listing.php">';
+
     echo '<div class="offset-lg-1" ><font color="red">Désolé, mais l\'adresse mail ou le pseudo existent déjà.<br></font></div>';
     } 
 
@@ -66,14 +67,13 @@ if($db->connect_error){
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-        include ('header.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_listing.php">';
         echo '<div class="offset-lg-1" >L\'adhérent '.$nom.' '.$prenom.' a été ajouté.</div><br>';
-        include ('btn.php');
+        
                 }
     //si vous vous êtes trompé dans les champs à remplir
 			else{
-                include ('header.php');
-                include ('form_listing.php');
+                echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_listing.php">';
                 echo '<div class="offset-lg-1" >Vous n\'avez pas rempli correctement le formulaire.</div><br>';}
     // on ferme la connexion              
     if(@$db->close()){

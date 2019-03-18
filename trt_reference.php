@@ -10,6 +10,8 @@ else     { $clef1="";} ;
 // On vérifie si les champs sont vides 
 if(empty($livre) OR empty($clef1))
     { 
+        
+
      echo '<div class="offset-lg-1" ><font color="red">Vous n\'avez pas rempli le champ du mot clef</font></div>'; 
     } 
 // Aucun champ n'est vide, on peut enregistrer dans la table reference
@@ -43,14 +45,13 @@ else
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-        include ('header.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_reference.php">';
         echo '<div class="offset-lg-1" >L\'insertion a réussi</div><br>';
-        include ('btn.php');
+        
     }
     //si vous vous êtes trompé dans les champs à remplir
 			else{
-                include ('header.php');
-        include ('form_reference.php');
+                echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_reference.php">';
                 echo 'Vous n\'avez pas rempli correctement le formulaire.<br>';}
     // on ferme la connexion              
     if(@$db->close()){

@@ -26,8 +26,7 @@ if($db->connect_error){
     
     if($row!= 0)  // le mot existe déjà, on affiche un message d'erreur 
     { 
-        include ('header.php');
-        include ('form_clef.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_clef.php">';
         echo '<div class="offset-lg-1" ><font color="red">Désolé, mais le mot clef:  '.$mot1.' existe déjà.<br></font></div>'; 
 
     } 
@@ -42,14 +41,13 @@ if($db->connect_error){
 
     // on affiche le résultat pour le visiteur 
     if ($resultat === true){
-        include ('header.php');
+        echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_clef.php">';
         echo '<div class="offset-lg-1" >Le mot clef '.$mot1.' a été ajouté.</div><br>';
-        include ('btn.php');
+        
     }
     //si vous vous êtes trompé dans le champs a remplir
 			else{
-                include ('header.php');
-                include ('form_clef.php');
+                echo '<meta http-equiv="refresh" content="2;URL=http://localhost/exercice_12_03_2019/index.php?page=form_clef.php">';
                 echo 'Vous n\'avez pas rempli correctement le champ de mot clef.<br>';}
                  
     // on ferme la connexion
